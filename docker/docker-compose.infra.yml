@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: ihrm-mysql57
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ihrm
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-time-zone=+08:00
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
+  redis:
+    image: redis:6.2
+    container_name: ihrm-redis62
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
