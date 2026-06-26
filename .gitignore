@@ -25,3 +25,7 @@ docker/mysql-data/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local doc archives: do not publish binary bundles of the design docs
+docs/agent/**/*.zip
+docs/agent/*.zip
